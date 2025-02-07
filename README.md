@@ -70,16 +70,26 @@ Let's get started!
 
 ---
 
-## BONUS - Error Handling and Optimization
+## BONUS: Extend the Scraper to Iterate Through Pages 1 to 10
 
-- Implement error handling using try/except/finally blocks to manage potential issues (e.g., missing elements).
-- Add logging messages to help track the progress and identify issues in your script.
-- *(Optional)* Enhance the challenge by using the **Pandas** library to:
-  - Read the generated CSV file.
-  - Display a summary (for example, count the total number of products or filter based on specific conditions).
-  - Save any updated or analyzed data to a new CSV file.
+Now that you have built a scraper that extracts detailed information for all products on a single page, take it a step further by extending its functionality:
 
----
+1. **Navigate Through Multiple Pages:**
+   - Modify your script to iterate through the pages from 1 to 10.
+   - For each page, update the URL parameter (for example, changing the page query parameter from `?p=1` to `?p=2`, and so on until `?p=10`).
+
+2. **Extract Data on Each Page:**
+   - For every page (from page 1 to page 10), repeat the process of extracting the list of product links.
+   - For each product on the current page, navigate to its detail page, extract the required information (such as product name and price), and then return to the list of products.
+
+3. **Aggregate and Store Data:**
+   - Accumulate the product details from all pages into a single data structure.
+   - Export the combined data to a CSV file (for example, `products_detail_all_pages.csv`) with appropriate headers.
+
+4. **Additional Considerations:**
+   - Implement error handling (using try/except/finally blocks) to manage any issues during navigation or data extraction.
+   - Consider adding logging messages to track progress and help with debugging if necessary.
+   - *(Optional)* Use optimization techniques to reduce loading times or to manage memory usage when processing multiple pages.
 
 ## Submission
 
