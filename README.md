@@ -84,24 +84,23 @@ Let's get started! 🚀
 
 ## BONUS: Extend the Scraper to Iterate Through Pages 1 to 10
 
-Now that you have built a scraper that extracts detailed information for all products on a single page, take it a step further by extending its functionality:
+Now that you have a working scraper for a single page, extend its functionality by iterating through multiple pages.
 
-1. **Navigate Through Multiple Pages:**
-   - Modify your script to iterate through the pages from 1 to 10.
-   - For each page, update the URL parameter (for example, changing the page query parameter from `?p=1` to `?p=2`, and so on until `?p=10`).
+1. **Navigate Through Multiple Pages:**  
+   - Modify your script to loop through pages 1 to 10.  
 
-2. **Extract Data on Each Page:**
-   - For every page (from page 1 to page 10), repeat the process of extracting the list of product links.
-   - For each product on the current page, navigate to its detail page, extract the required information (such as product name and price), and then return to the list of products.
+2. **Extract Data from Each Page:**  
+   - Retrieve all product links on each page.  
+   - Visit each product’s detail page, extract the required information, and return to the listing.  
 
-3. **Aggregate and Store Data:**
-   - Accumulate the product details from all pages into a single data structure.
-   - Export the combined data to a CSV file (for example, `products_detail_all_pages.csv`) with appropriate headers.
+3. **Aggregate and Store Data:**  
+   - Combine product details from all pages into a single dataset.  
+   - Save the extracted data in `products_detail_all_pages.csv` (or JSON if preferred).  
 
-4. **Additional Considerations:**
-   - Implement error handling (using try/except/finally blocks) to manage any issues during navigation or data extraction.
-   - Consider adding logging messages to track progress and help with debugging if necessary.
-   - *(Optional)* Use optimization techniques to reduce loading times or to manage memory usage when processing multiple pages.
+4. **Additional Challenges:**  
+   - Implement error handling to manage potential issues.  
+   - Add logging messages to track progress.  
+   - *(Optional)* Explore optimization techniques to improve efficiency.  
 
 ## Submission
 
