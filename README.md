@@ -10,7 +10,7 @@ In this lab, you will learn how to:
 - Click on the **first product** to enter its detail page and extract specific information (e.g., the price).
 - Later modify your script to extract the same detailed information for **all products** on the page without navigating to additional pages.
 
-Let's get started!
+Let's get started! 🚀
 
 ---
 
