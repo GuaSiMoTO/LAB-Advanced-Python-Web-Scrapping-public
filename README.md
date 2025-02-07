@@ -51,22 +51,34 @@ Let's get started! 🚀
 
 ---
 
-## Iteration 2: Extract Information for All Products on the Page
+# Iteration 2: Extract Information for All Products on the Page
 
-### 2.1 / Iterate Through All Products
+## 2.1 Iterate Through All Products
 
-1. Modify your script so that, instead of processing only the first product, it iterates over **all** products listed on the main page.
-2. For each product:
-   - Click on the product link to navigate to its detail page.
-   - Extract the desired information (e.g., product name and price).
-   - Return to the main page to continue processing the next product.
-     - **Tip:** Consider using the browser's back functionality or opening each product in a new tab and closing it after extraction.
+1. **Iterate Over All Products:**  
+   Modify your script so that, instead of processing only the first product, it iterates over **all** products listed on the main page.  
+   > **Note:** In the provided solution, all product links are extracted (using the `href` attribute) and stored in a list, allowing direct navigation to each product detail page using `driver.get(link)`.
 
-### 2.2 / Store and Present Data
+2. **For Each Product:**
+   - Retrieve the product link (`href` attribute) and navigate to its detail page using `driver.get(link)`.
+   - Wait until the main content of the detail page is loaded (e.g., a container that includes the product title).
+   - Extract the required information, such as **product name**, **price**, and **description**.
+     - If any of these details are missing, assign the value `"No available"`.
+   - Print the extracted information for each product to the console.
+   > **Tip:** To avoid "stale element" issues, first collect all product links and navigate directly using `driver.get()`, rather than clicking the product link and using the browser's back functionality.
 
-1. Save the information extracted from each product in a suitable data structure (for example, a list of dictionaries).
-2. Print the complete list of products with their details to the console.
-3. Export the aggregated data to a CSV file named `products_detail.csv` with appropriate headers (such as `Name` and `Price`).
+## 2.2 Store and Present Data
+
+1. **Store the Extracted Data:**  
+   Save the extracted product information (name, price, and description) in an appropriate data structure, such as a list of dictionaries. Each dictionary represents a product.
+
+2. **Console Output:**  
+   Print the complete list of products with their details to the console to ensure the extraction was successful.
+
+3. **Export the Data:**  
+   Export the aggregated data to a file. In the provided solution, the data is saved in JSON format in a file named `products.json`.  
+   > **Alternative:** You may also export the data to a CSV file (e.g., `products_detail.csv`) with appropriate headers such as `Name`, `Price`, and `Description`.
+
 
 ---
 
