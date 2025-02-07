@@ -1,7 +1,5 @@
 # LAB-Advanced-Python-Web-Scrapping
 
-# LAB-Web-Scraping-Detailed-Product-Information-with-Selenium-and-BeautifulSoup
-
 ## Introduction
 
 > **Note:** This lab can be completed in pairs or individually.
