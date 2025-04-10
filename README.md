@@ -57,7 +57,7 @@ Let's get started! 🚀
 
 1. **Iterate Over All Products:**  
    Modify your script so that, instead of processing only the first product, it iterates over **all** products listed on the main page.  
-   > **Note:** In the provided solution, all product links are extracted (using the `href` attribute) and stored in a list, allowing direct navigation to each product detail page using `driver.get(link)`.
+   > **Hint:** Extract all product links using the `href` attribute and store them in a list. This will let you navigate directly to each product detail page using `driver.get(link)`.
 
 2. **For Each Product:**
    - Retrieve the product link (`href` attribute) and navigate to its detail page using `driver.get(link)`.
