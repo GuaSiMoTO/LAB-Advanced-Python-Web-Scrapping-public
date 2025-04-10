@@ -8,63 +8,58 @@ from selenium.webdriver.support import expected_conditions as EC
 import time
 import json
 
-# Driver configuration (you can enable headless mode if needed)
+# Driver configuration 
 options = webdriver.ChromeOptions()
-# options.add_argument('--headless')  # Uncomment this line for headless mode
+options.add_argument('--headless')  # si quieres que no se abra la ventana del navegador
 driver = webdriver.Chrome(options=options)
 products_data = []
 
 try:
-    # Step 1: Navigate to the main page with the product listings
+    # Step 1: navega a la pagina principal con los listados de productos
     main_page_url = "https://guanxe.com/es/3628-portatiles?p=1"
     driver.get(main_page_url)
     
-    # Wait until product links are loaded
+    # espera a que hasta que haya un elemento con el nombre del producto
     WebDriverWait(driver, 10).until(
         EC.presence_of_all_elements_located((By.CSS_SELECTOR, "a.product-name"))
     )
     
-    # Step 2: Retrieve the list of product links
+    # Step 2: coge todos los enlaces de los productos
+    product_elements = driver.find_elements(By.CSS_SELECTOR, "a.product-name")
+    product_links = [element.get_attribute('href') for element in product_elements]
     
-    
-    # (Optional) Remove duplicates if any exist
+    # borramos los enlaces duplicados
     product_links = list(dict.fromkeys(product_links))
     
-    # Iterate over each product link
+    # Iterate sobre los enlaces de los productos
     for link in product_links:
         driver.get(link)
         
-        # Wait for the main product content to load.
-        # Here, we wait for the container that holds the title to be present.
-        try:
-            WebDriverWait(driver, 10).until(
-                EC.presence_of_element_located((By.CSS_SELECTOR, "div#derecha1"))
-            )
-        except Exception as e:
-            print("Could not load the product page:", link)
-            continue  # Skip to the next product
+        # espera a que la pagina cargue completamente
+
+        WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.CSS_SELECTOR, "div#derecha1")))
         
         # Step 3: Extract product information
-        
-        # Extract the product name
-        
-        
-        # Extract the product price
-        
-        
-        # Extract the product description
+        # extrae el nombre del producto
+        product_name = driver.find_element(By.CSS_SELECTOR, "#derecha1 h1").text
+    
+        product_price = driver.find_element(By.CSS_SELECTOR, "span#our_price_display").text
         
         
-        # Print the extracted information
+        # extrae la descripcion del producto
+        
+        product_description = driver.find_element(By.CSS_SELECTOR, "div#short_description_content").text
+        
+        
+        # imprimir los datos del producto
         print("Product Name:", product_name)
         print("Product Price:", product_price)
         print("Product Description:", product_description)
         print("--------------------------------------------------")
+
         
-        # (Optional) Short delay between products to avoid overloading the server
-        time.sleep(1)
-        
-        # Create a dictionary with product information and add it to the list
+        # creamos un diccionario con los datos del producto
+        # y lo añadimos a la lista de productos
         product_info = {
             "name": product_name,
             "price": product_price,
@@ -73,10 +68,8 @@ try:
         products_data.append(product_info)
         
         print("Product added:", product_info)
-        # (Optional) Short delay between products to avoid overloading the server
-        time.sleep(1)
         
-    # Step 4: Save the list of products to a JSON file
+    # guardamos los datos en un archivo JSON
     with open("products.json", "w", encoding="utf-8") as file:
         json.dump(products_data, file, ensure_ascii=False, indent=4)
     
