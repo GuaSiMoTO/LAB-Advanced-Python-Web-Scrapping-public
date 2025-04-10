@@ -104,13 +104,12 @@ Now that you have a working scraper for a single page, extend its functionality 
 
 ## Submission
 
-Once you have completed the lab, follow these steps to submit your work:
+Upon completion, run the following commands:
 
-1. Add your changes using Git.
-2. Commit your changes with a meaningful commit message (e.g., "Lab completed: Detailed Product Information Extraction (first product then all products)").
-3. Push your changes to the main branch.
-4. Create a Pull Request to merge your changes.
+```
+$ git add .
+$ git commit -m "done"
+$ git push origin main
+```
 
----
-
-This lab will help you deepen your understanding of Selenium and BeautifulSoup by dynamically navigating web pages and extracting detailed product information. Enjoy the challenge and happy coding!
+Then create a Pull Request!!
